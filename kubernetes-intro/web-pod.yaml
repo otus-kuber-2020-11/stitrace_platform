@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Pod
 metadata:
  name: nginx-kubernates-intro
- namespace: default
+ #namespace: default
  labels:
   app: hw1
 spec:
