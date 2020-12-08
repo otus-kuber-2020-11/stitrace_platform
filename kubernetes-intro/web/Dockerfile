@@ -13,3 +13,5 @@ RUN echo 'server { listen 8000 default_server; location / { root /var/www/localh
 
 CMD ["nginx", "-g", "daemon off; error_log /dev/stdout debug;"]    
 
+EXPOSE 8000
+
