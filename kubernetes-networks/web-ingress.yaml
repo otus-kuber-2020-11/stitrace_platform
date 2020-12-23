@@ -6,6 +6,9 @@ metadata:
   annotations:
     nginx.ingress.kubernates.io/rewrite-target: /
 spec:
+  backend:
+    serviceName: web-svc
+    servicePort: 8000
   rules:
     - http:
         paths:
