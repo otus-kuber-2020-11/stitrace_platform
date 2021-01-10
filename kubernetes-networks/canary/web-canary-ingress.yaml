@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: web-canary
+  namespace: canary
+  annotations:
+    nginx.ingress.kubernates.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-by-header: "X-Canary-Release"
+spec:
+  backend:
+    serviceName: web-canary
+    servicePort: 80
+  rules:
+  - http:
+     paths:
+     - path: /
+       backend:
+         serviceName: web-canary
+         servicePort: 80
+
