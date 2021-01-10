@@ -9,12 +9,6 @@ spec:
  containers:
  - name: web
    image: stitrace/nginx-kubernates-intro:0.0.2
-   readinessProbe:
-     httpGet:
-       path: /index.html
-       port: 80
-   livenessProbe: 
-       tcpSocket: { port: 8000 }
    imagePullPolicy: IfNotPresent
    volumeMounts:
    - name: app
