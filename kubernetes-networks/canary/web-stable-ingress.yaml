@@ -11,9 +11,11 @@ spec:
     serviceName: web-stable
     servicePort: 80
   rules:
-  - http:
+  - host: example.com
+    http:
      paths:
      - path: /
+       pathType: Prefix
        backend:
          serviceName: web-stable
          servicePort: 80

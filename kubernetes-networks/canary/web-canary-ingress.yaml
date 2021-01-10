@@ -13,9 +13,11 @@ spec:
     serviceName: web-canary
     servicePort: 80
   rules:
-  - http:
+  - host: example.com
+    http:
      paths:
      - path: /
+       pathType: Prefix
        backend:
          serviceName: web-canary
          servicePort: 80
