@@ -1,3 +1,4 @@
+
 ### HW 4
 
 * Создал Deployment, исследовали механизм livenessProbe/readinessProbe в различных вариациях.
