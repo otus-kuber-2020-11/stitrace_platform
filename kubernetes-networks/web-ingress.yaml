@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/$2"
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+        - path: /web(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: web-svc
+              port:
+                number: 8000
+
