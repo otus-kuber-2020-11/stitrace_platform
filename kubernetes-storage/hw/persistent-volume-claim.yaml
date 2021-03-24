@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: storage-pod-pvc
+  name: storage-pvc
 spec:
   resources:
     requests:
