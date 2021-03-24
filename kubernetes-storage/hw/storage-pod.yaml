@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: storage-service
+spec:
+  containers:
+    - name: storage-service
+      image: "stitrace/nginx-kubernates-intro:0.0.4"
+      volumeMounts:
+      - name: persistent-storage
+        mountPath: "/data"
+  volumes:
+    - name: persistent-storage
+      persistentVolumeClaim:
+        claimName: storage-pod-pvc
