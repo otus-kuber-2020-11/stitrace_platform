@@ -4,9 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: storage-pvc
 spec:
+  storageClassName: hostpath-csi-sc
   resources:
     requests:
       storage: 100M
   accessModes:
     - ReadWriteOnce
-  storageClassName: hostpath-csi-storage-class
+

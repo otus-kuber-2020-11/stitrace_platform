@@ -6,11 +6,12 @@ metadata:
 spec:
   containers:
     - name: storage-pod
-      image: "stitrace/nginx-kubernates-intro:0.0.4"
+      image: busybox
       volumeMounts:
-      - name: persistent-storage
+      - name: ps
         mountPath: "/data"
+      command: ["/bin/sh", "-ec", "sleep 1000"]
   volumes:
-    - name: persistent-storage
-      persistentVolumeClaim:
-        claimName: storage-pvc
+  - name: ps
+    persistentVolumeClaim:
+      claimName: storage-pvc
