@@ -1,0 +1,10 @@
+---
+tolerations:
+ - key: node-role
+   operator: Equal
+   value: infra
+   effect: NoSchedule
+
+nodeSelector:
+ yandex.cloud/node-group-id: cat92ft1tu9ebsb959bl
+
