@@ -1,0 +1,10 @@
+ingress:
+  enabled: true
+  annotations: {
+    kubernetes.io/ingress.class: nginx
+    }
+  path: /
+  hosts:
+    - grafana.84.201.141.161.nip.io
+adminUser: admin
+adminPassword: admin
