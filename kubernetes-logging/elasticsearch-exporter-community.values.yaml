@@ -1,0 +1,17 @@
+---
+service:
+  type: ClusterIP
+  httpPort: 9108
+  metricsPort:
+    name: http
+  annotations: {}
+  labels: {}
+
+es:
+ uri: http://elasticsearch-master:9200
+web:
+  path: /metrics
+
+serviceMonitor:
+  enabled: true
+

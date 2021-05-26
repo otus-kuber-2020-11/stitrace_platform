@@ -1,0 +1,19 @@
+---
+tolerations:
+ - key: node-role
+   operator: Equal
+   value: infra
+   effect: NoSchedule
+
+nodeSelector:
+ cloud.local/nodepool: infra-pool
+
+replicas: 2
+minimumMasterNodes: 1
+
+volumeClaimTemplate:
+  storageClassName: nfs-client 
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 30Gi
