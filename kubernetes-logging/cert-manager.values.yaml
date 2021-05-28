@@ -1,0 +1,131 @@
+global:
+  imagePullSecrets: []
+  priorityClassName: ""
+  rbac:
+    create: true
+
+  podSecurityPolicy:
+    enabled: false
+    useAppArmor: true
+
+  logLevel: 2
+  leaderElection:
+    namespace: "kube-system"
+
+installCRDs: true
+replicaCount: 1
+strategy: {}
+
+featureGates: ""
+image:
+  repository: quay.io/jetstack/cert-manager-controller
+  pullPolicy: IfNotPresent
+
+clusterResourceNamespace: ""
+
+serviceAccount:
+  create: true
+  automountServiceAccountToken: true
+
+extraArgs: []
+extraEnv: []
+resources: {}
+
+securityContext:
+  runAsNonRoot: true
+
+containerSecurityContext: {}
+volumes: []
+volumeMounts: []
+podLabels: {}
+nodeSelector: {}
+ingressShim: {}
+
+prometheus:
+  enabled: true
+  servicemonitor:
+    enabled: false
+    prometheusInstance: default
+    targetPort: 9402
+    path: /metrics
+    interval: 60s
+    scrapeTimeout: 30s
+    labels: {}
+
+
+affinity: {}
+tolerations:
+ - key: node-role
+   operator: Equal
+   value: infra
+   effect: NoSchedule
+
+webhook:
+  replicaCount: 1
+  timeoutSeconds: 10
+  strategy: {}
+  securityContext:
+    runAsNonRoot: true
+
+  containerSecurityContext: {}
+  extraArgs: []
+  resources: {}
+
+  livenessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 60
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  readinessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 1
+
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
+  podLabels: {}
+  image:
+    repository: quay.io/jetstack/cert-manager-webhook
+    pullPolicy: IfNotPresent
+
+  serviceAccount:
+    create: true
+    automountServiceAccountToken: true
+
+  securePort: 10250
+  hostNetwork: false
+  serviceType: ClusterIP
+  url: {}
+
+cainjector:
+  enabled: true
+  replicaCount: 1
+  strategy: {}
+
+  securityContext:
+    runAsNonRoot: true
+
+  containerSecurityContext: {}
+
+  extraArgs: []
+  resources: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations:
+    - key: node-role
+      operator: Equal
+      value: infra
+      effect: NoSchedule
+
+  podLabels: {}
+  image:
+    repository: quay.io/jetstack/cert-manager-cainjector
+    pullPolicy: IfNotPresent
+
+  serviceAccount:
+    create: true
+    automountServiceAccountToken: true
